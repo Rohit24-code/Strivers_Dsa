@@ -28,5 +28,51 @@
 
 // So largest odd number in given string is 21463.
 
-export function LargestOddNumber(str: string) {}
-LargestOddNumber("0214638");
+// export function LargestOddNumber(str: string) {
+//   console.log(str.length, "length");
+//   let ans = 0;
+//   for (let i = 0; i < str.length; i++) {
+//     let comb = str[i];
+//     for (let j = i + 1; j < str.length; j++) {
+//       if (+comb % 2 != 0 && +comb > ans) {
+//         ans = +comb;
+//       }
+//       comb += str[j];
+//       if (+comb % 2 != 0 && +comb > ans) {
+//         ans = +comb;
+//       }
+//     }
+//   }
+
+//   return ans;
+// }
+
+export const LargestOddNumber = (str: string) => {
+  let ans = "";
+  let start = 0;
+  let end = -1;
+
+  for (let i = 0; i < str.length; i++) {
+    if (+str[i] != 0) {
+      start = i;
+      break;
+    }
+  }
+
+  for (let i = str.length - 1; i >= 0; i--) {
+    if (+str[i] % 2 != 0) {
+      end = i;
+      break;
+    }
+  }
+
+  if (end === -1) return "";
+  console.log(start, end);
+  for (let i = start; i <= end; i++) {
+    ans += str[i];
+  }
+
+  return ans;
+};
+let ans = LargestOddNumber("0002146346");
+console.log(ans, "ans");
